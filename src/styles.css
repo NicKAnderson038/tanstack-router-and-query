@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+body {
+  @apply m-0 bg-white dark:bg-gray-800;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+footer {
+  @apply text-center text-gray-500 dark:text-gray-400;
+  height: 100vh;
+}
+
+.btn-primary {
+  @apply gap-x-2 cursor-pointer text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:ring-4 focus:ring-[#2557D6]/50 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#2557D6]/50;
+  * {
+    margin-inline-start: -2px;
+    margin-inline-end: -2px;
+  }
+}
+
+.link-outline {
+  @apply flex flex-row text-center inline-flex items-center w-fit gap-x-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded;
+}
+
+/* .skeleton-base {
+  @apply bg-gray-200 rounded-lg dark:bg-gray-700 animate-pulse w-full;
+} */
+
+.skeleton-base-circle {
+  @apply bg-gray-200 rounded-full dark:bg-gray-700 animate-pulse w-full;
+}

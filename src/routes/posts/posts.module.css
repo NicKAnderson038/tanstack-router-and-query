@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .parent {
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .parent {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
