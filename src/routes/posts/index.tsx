@@ -1,7 +1,7 @@
 import { Heading, Skeleton } from "@shared"
 import { Link, createFileRoute } from "@tanstack/react-router"
 
-import { useGetPosts, useGetPlanet } from "./-queryApi"
+import { useGetPosts } from "./-queryApi"
 import styles from "./posts.module.css"
 
 const skeleton = Array.from({ length: 100 }, (_, i) => i + 1)
@@ -10,7 +10,6 @@ export const Route = createFileRoute("/posts/")({
   component: Component,
   loader: ({ context: { queryClient } }) => {
     return {
-      ...queryClient.ensureQueryData(useGetPlanet.loader()),
       ...queryClient.ensureQueryData(useGetPosts.loader()),
     }
   },
@@ -34,12 +33,10 @@ export const Route = createFileRoute("/posts/")({
 function Component() {
   const { data: posts } = useGetPosts.suspenseQuery()
 
-  const { data: planets } = useGetPlanet.suspenseQuery()
-
   return (
     <>
       <Heading.H3 className="gap-1">
-        Planets Total:<span>{planets.count}</span>
+        Planets Total:<span>{posts.length}</span>
       </Heading.H3>
 
       <div className={styles.parent}>

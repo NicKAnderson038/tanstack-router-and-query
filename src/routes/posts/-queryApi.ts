@@ -4,7 +4,7 @@ export const Api = {
   GET_POSTS: "https://jsonplaceholder.typicode.com/posts?_delay=3000",
   GET_POST_BY_ID: "https://jsonplaceholder.typicode.com/posts/{id}",
   GET_COMMENTS_BY_ID: "https://jsonplaceholder.typicode.com/comments/{id}",
-  GET_PLANETS: "https://swapi.dev/api/planets",
+  GET_THUMBNAIL: "https://jsonplaceholder.typicode.com/photos",
 } as const
 
 export const useGetPosts = {
@@ -19,9 +19,9 @@ export const useGetCommentById = {
   ...ts({ _url: Api.GET_COMMENTS_BY_ID }),
 }
 
-export const useGetPlanet = {
+export const useGetThumbnail = {
   ...ts({
-    _url: Api.GET_PLANETS,
+    _url: Api.GET_THUMBNAIL,
     _suspenseQueryParams: { staleTime: Infinity },
   }),
 }

@@ -1,7 +1,7 @@
 import { Button, Heading, Icon, Skeleton, Text } from "@shared"
 import { Link, createFileRoute } from "@tanstack/react-router"
 
-import { useGetCommentById, useGetPostById, useGetPlanet } from "./-queryApi"
+import { useGetCommentById, useGetPostById, useGetThumbnail } from "./-queryApi"
 
 // $id Dynamic Route behavior: if refreshed on this page, it will show the global pendingComponent in main.tsx
 // overriden by the pendingComponent in this file
@@ -47,11 +47,11 @@ function Component() {
   const id = Route.useParams().id
 
   const {
-    data: planetData,
-    refetch: planetRefetch,
-    isFetching: planetFetching,
-  } = useGetPlanet.disableQuery()
-  console.log(planetData)
+    data: thumbnailUrlData,
+    refetch: thumbnailUrlRefetch,
+    isFetching: thumbnailUrlFetching,
+  } = useGetThumbnail.disableQuery()
+  console.log(thumbnailUrlData)
 
   const {
     data: postIdData,
@@ -80,8 +80,8 @@ function Component() {
         <Icon.Apple />
         {commentData.email}
       </Text>
-      {planetData?.next ? (
-        <Text id="planet-link">{planetData?.next}</Text>
+      {thumbnailUrlData?.length ? (
+        <Text id="planet-link">{thumbnailUrlData[id]?.thumbnailUrl}</Text>
       ) : (
         <Text id="planet-link">[No Data Fetched]</Text>
       )}
@@ -93,13 +93,13 @@ function Component() {
           onClick={() => {
             postIdRefetch()
             commentRefetch()
-            planetRefetch()
+            thumbnailUrlRefetch()
           }}
           className="btn-primary mt-6"
         >
           <Icon.Apple />
           Refetch Data
-          {postIdFetching || commentIsFetching || planetFetching ? (
+          {postIdFetching || commentIsFetching || thumbnailUrlFetching ? (
             <Icon.Spinner />
           ) : (
             <Icon.MetaMask />
@@ -111,12 +111,12 @@ function Component() {
           onClick={() => {
             postIdRefetch()
             commentRefetch()
-            planetRefetch()
+            thumbnailUrlRefetch()
           }}
         >
           <Icon.Apple />
           Refetch Data
-          {postIdFetching || commentIsFetching || planetFetching ? (
+          {postIdFetching || commentIsFetching || thumbnailUrlFetching ? (
             <Icon.Spinner />
           ) : (
             <Icon.MetaMask />
