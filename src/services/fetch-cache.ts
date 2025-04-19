@@ -21,14 +21,14 @@ type UrlParamsProp = (string | number)[]
 
 export const ts = ({
   _url,
-  _queryOptionsParams = {},
+  _loaderOptionsParams = {},
   _suspenseQueryParams = {},
   _disableQueryParams = {},
   _queryParams = {},
   _changeData,
 }: {
   _url: string
-  _queryOptionsParams?: UseQueryOptionsProps
+  _loaderOptionsParams?: UseQueryOptionsProps
   _suspenseQueryParams?: SuspenseQueryOptionsProps
   _disableQueryParams?: UseDisabledQueryProps
   _queryParams?: UseQueryOptionsProps
@@ -41,7 +41,7 @@ export const ts = ({
     loader: (urlParams: UrlParamsProp = []) => {
       const queryKey = [_url, ...urlParams]
       return queryOptions({
-        ..._queryOptionsParams,
+        ..._loaderOptionsParams,
         queryKey,
         queryFn: async () => await getData(queryKey),
       })
