@@ -17,5 +17,5 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
   },
-  base: '/tanstack-router-and-query/'
+  // base: '/tanstack-router-and-query/'
 });
