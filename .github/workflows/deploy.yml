@@ -10,7 +10,7 @@ permissions:
     pages: write
 
 env:
-  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_NAME: /${{ github.event.repository.name }}/
 
 jobs:
   # Build job
@@ -23,7 +23,7 @@ jobs:
 
       - name: Print Repo Name
         run: |
-          echo "Repository Name: /$REPO_NAME/"
+          echo "Repository Name: $REPO_NAME"
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -34,14 +34,9 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      # - name: Dynamically create vite.config.js
-      #   run: |
-      #     echo 'export default { base: "/${{ github.event.repository.name }}/" }' > vite.config.js
-
       - name: Build static files
         id: build
-        # run: npx vite build --base=/tanstack-router-and-query/
-        run: npx vite build --base=/$REPO_NAME/
+        run: npx vite build --base=$REPO_NAME
         # run: npm run build
 
       - name: Upload static files as artifact
