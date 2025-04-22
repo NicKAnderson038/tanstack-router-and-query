@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TanstackRouterAndQueryImport } from './routes/tanstack-router-and-query'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as PostsIndexImport } from './routes/posts/index'
@@ -30,6 +31,12 @@ const LazyloadLazyRoute = LazyloadLazyImport.update({
   path: '/lazy_load',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/lazy_load.lazy').then((d) => d.Route))
+
+const TanstackRouterAndQueryRoute = TanstackRouterAndQueryImport.update({
+  id: '/tanstack-router-and-query',
+  path: '/tanstack-router-and-query',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const AboutRoute = AboutImport.update({
   id: '/about',
@@ -79,6 +86,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/tanstack-router-and-query': {
+      id: '/tanstack-router-and-query'
+      path: '/tanstack-router-and-query'
+      fullPath: '/tanstack-router-and-query'
+      preLoaderRoute: typeof TanstackRouterAndQueryImport
+      parentRoute: typeof rootRoute
+    }
     '/lazy_load': {
       id: '/lazy_load'
       path: '/lazy_load'
@@ -115,6 +129,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/tanstack-router-and-query': typeof TanstackRouterAndQueryRoute
   '/lazy_load': typeof LazyloadLazyRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/posts/$id': typeof PostsIdRoute
@@ -124,6 +139,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/tanstack-router-and-query': typeof TanstackRouterAndQueryRoute
   '/lazy_load': typeof LazyloadLazyRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/posts/$id': typeof PostsIdRoute
@@ -134,6 +150,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/tanstack-router-and-query': typeof TanstackRouterAndQueryRoute
   '/lazy_load': typeof LazyloadLazyRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/posts/$id': typeof PostsIdRoute
@@ -145,6 +162,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/tanstack-router-and-query'
     | '/lazy_load'
     | '/demo/tanstack-query'
     | '/posts/$id'
@@ -153,6 +171,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/tanstack-router-and-query'
     | '/lazy_load'
     | '/demo/tanstack-query'
     | '/posts/$id'
@@ -161,6 +180,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/tanstack-router-and-query'
     | '/lazy_load'
     | '/demo/tanstack-query'
     | '/posts/$id'
@@ -171,6 +191,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  TanstackRouterAndQueryRoute: typeof TanstackRouterAndQueryRoute
   LazyloadLazyRoute: typeof LazyloadLazyRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   PostsIdRoute: typeof PostsIdRoute
@@ -180,6 +201,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  TanstackRouterAndQueryRoute: TanstackRouterAndQueryRoute,
   LazyloadLazyRoute: LazyloadLazyRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   PostsIdRoute: PostsIdRoute,
@@ -198,6 +220,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/tanstack-router-and-query",
         "/lazy_load",
         "/demo/tanstack-query",
         "/posts/$id",
@@ -209,6 +232,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/tanstack-router-and-query": {
+      "filePath": "tanstack-router-and-query.tsx"
     },
     "/lazy_load": {
       "filePath": "lazy_load.lazy.tsx"
