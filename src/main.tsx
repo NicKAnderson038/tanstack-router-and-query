@@ -6,8 +6,6 @@ import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { routeTree } from "./routeTree.gen.ts"
 import { queryClient } from "@integrations"
 
-import pgJson from "../package.json" with { type: "json" }
-
 import "./styles.css"
 import reportWebVitals from "./reportWebVitals.ts"
 
