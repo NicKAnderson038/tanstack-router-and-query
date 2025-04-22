@@ -20,7 +20,7 @@ jobs:
 
       - name: Print Repo Name
         run: |
-          echo "Repository Name: ${{ github.workspace }}"
+          echo "Repository Name: ${{ github.base_ref }}"
 
       - name: Setup Node
         uses: actions/setup-node@v3
