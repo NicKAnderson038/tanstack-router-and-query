@@ -1,6 +1,6 @@
 import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
-import { RouterProvider, createRouter, Link } from "@tanstack/react-router"
+import { RouterProvider, createRouter } from "@tanstack/react-router"
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen.ts"
@@ -18,16 +18,6 @@ const router = createRouter({
   defaultPreload: "intent",
   scrollRestoration: true,
   defaultStructuralSharing: true,
-  // defaultNotFoundComponent: () => {
-  //   return (
-  //     <div>
-  //       <p className="dark:text-white">Not Found: 404</p>
-  //       <Link to="/" className="link-outline mb-6">
-  //         Go home
-  //       </Link>
-  //     </div>
-  //   )
-  // },
 })
 
 // Register the router instance for type safety
