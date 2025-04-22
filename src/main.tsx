@@ -21,8 +21,10 @@ const router = createRouter({
   defaultNotFoundComponent: () => {
     return (
       <div>
-        <p>Not Found: 404</p>
-        <Link to="/">Go home</Link>
+        <p className="dark:text-white">Not Found: 404</p>
+        <Link to="/" className="link-outline mb-6">
+          Go home
+        </Link>
       </div>
     )
   },
