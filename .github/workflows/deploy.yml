@@ -10,17 +10,11 @@ permissions:
     pages: write
 
 jobs:
-  # Build job
   build:
-    # Specify runner +  build & upload the static files as an artifact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Print Repo Name
-        run: |
-          echo "Repository Name: ${{ github.event.repository.name }}"
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -30,7 +24,7 @@ jobs:
 
       - name: Build static files
         id: build
-        run: npx vite build --base=/tanstack-router-and-query/
+        run: npx vite build --base=/${{ github.event.repository.name }}/
         # run: npm run build
 
       - name: Upload static files as artifact
@@ -39,7 +33,6 @@ jobs:
         with:
           path: ./dist
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
