@@ -35,7 +35,7 @@ jobs:
       - name: Build static files
         id: build
         # run: npm run build
-        run: npx vite build --base=/$REPO_NAME/
+        run: npx vite build --base=/$REPO_NAME/ && tsc
 
       - name: Upload static files as artifact
         id: deployment
