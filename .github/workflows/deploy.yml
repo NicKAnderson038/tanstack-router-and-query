@@ -34,7 +34,7 @@ jobs:
 
       - name: Build static files
         id: build
-        run: npx vite build --base="/${{ github.event.repository.name }}/"
+        run: npx vite build --base=/tanstack-router-and-query/
         # run: npm run build
 
       - name: Upload static files as artifact
