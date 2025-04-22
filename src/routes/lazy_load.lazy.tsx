@@ -34,7 +34,7 @@ function Component() {
     <>
       <Heading.H3>Lazy Load</Heading.H3>
       <div className="flex flex-col max-w-xs">
-        <label htmlFor="ice-cream-choice">DataList Html Api:</label>
+        <label htmlFor="ice-cream-choice" className="dark:text-white">DataList Html Api:</label>
         <input
           id="ice-cream-choice"
           name="ice-cream-choice"

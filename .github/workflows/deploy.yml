@@ -13,7 +13,6 @@ env:
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -35,9 +34,8 @@ jobs:
 
       - name: Build static files
         id: build
-        # run: npx vite build --base=/tanstack-router-and-query/
-        run: npx vite build --base=/$REPO_NAME/
         # run: npm run build
+        run: npx vite build --base=/$REPO_NAME/
 
       - name: Upload static files as artifact
         id: deployment
@@ -45,7 +43,6 @@ jobs:
         with:
           path: ./dist
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
