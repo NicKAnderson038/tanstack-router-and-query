@@ -18,6 +18,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Print Repo Name
+        run: |
+          echo "Repository Name: ${{ github.repository }}"
+
       - name: Setup Node
         uses: actions/setup-node@v3
 
