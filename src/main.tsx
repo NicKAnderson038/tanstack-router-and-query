@@ -18,16 +18,16 @@ const router = createRouter({
   defaultPreload: "intent",
   scrollRestoration: true,
   defaultStructuralSharing: true,
-  defaultNotFoundComponent: () => {
-    return (
-      <div>
-        <p className="dark:text-white">Not Found: 404</p>
-        <Link to="/" className="link-outline mb-6">
-          Go home
-        </Link>
-      </div>
-    )
-  },
+  // defaultNotFoundComponent: () => {
+  //   return (
+  //     <div>
+  //       <p className="dark:text-white">Not Found: 404</p>
+  //       <Link to="/" className="link-outline mb-6">
+  //         Go home
+  //       </Link>
+  //     </div>
+  //   )
+  // },
 })
 
 // Register the router instance for type safety
