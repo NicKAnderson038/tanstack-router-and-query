@@ -18,20 +18,6 @@ const router = createRouter({
   defaultPreload: "intent",
   scrollRestoration: true,
   defaultStructuralSharing: true,
-  defaultNotFoundComponent: () => {
-    // const navigate = useNavigate()
-    // // gh-pages auto-nav
-    // if (location.pathname.includes(pgJson.name)) {
-    //   navigate({
-    //     to: "/",
-    //   })
-    // }
-    return (
-      <div>
-        <p className="dark:text-white mb-2">Not Found</p>
-      </div>
-    )
-  },
 })
 
 // Register the router instance for type safety
