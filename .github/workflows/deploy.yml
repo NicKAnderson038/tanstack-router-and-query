@@ -28,14 +28,14 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Dynamically create vite.config.js
-        run: |
-          echo 'export default { base: "/${{ github.event.repository.name }}/" }' > vite.config.js
+      # - name: Dynamically create vite.config.js
+      #   run: |
+      #     echo 'export default { base: "/${{ github.event.repository.name }}/" }' > vite.config.js
 
       - name: Build static files
         id: build
-        # run: npx vite build --base="/${{ github.event.repository.name }}/"
-        run: npm run build
+        run: npx vite build --base="/${{ github.event.repository.name }}/"
+        # run: npm run build
 
       - name: Upload static files as artifact
         id: deployment
