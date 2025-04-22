@@ -20,7 +20,7 @@ jobs:
 
       - name: Print Repo Name
         run: |
-          echo "Repository Name: ${{ github.repository }}"
+          echo "Repository Name: ${{ github.repository_owner }}"
 
       - name: Setup Node
         uses: actions/setup-node@v3
