@@ -1,6 +1,10 @@
 import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
-import { RouterProvider, createRouter, Link, useNavigate } from "@tanstack/react-router"
+import {
+  RouterProvider,
+  createRouter,
+  useNavigate,
+} from "@tanstack/react-router"
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen.ts"
@@ -23,9 +27,9 @@ const router = createRouter({
   defaultNotFoundComponent: () => {
     const navigate = useNavigate()
     // gh-pages auto-nav
-    if(location.pathname.includes(pgJson.name)) {
+    if (location.pathname.includes(pgJson.name)) {
       navigate({
-        to: '/',
+        to: "/",
       })
     }
     return (
