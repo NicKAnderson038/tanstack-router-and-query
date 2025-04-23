@@ -8,5 +8,11 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
   },
-  "workbench.editor.labelFormat": "short"
+  "workbench.editor.labelFormat": "short",
+  "taskExplorer.groupSeparator": ":",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

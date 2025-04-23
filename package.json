@@ -7,8 +7,8 @@
     "build": "vite build && tsc",
     "serve": "vite preview",
     "test": "vitest run",
-    "package-check": "npx npm-check-updates -u",
-    "package-updates": "npx npm-check-updates -i --format group"
+    "package:check": "npx npm-check-updates",
+    "package:updates": "npx npm-check-updates -i --format group"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
