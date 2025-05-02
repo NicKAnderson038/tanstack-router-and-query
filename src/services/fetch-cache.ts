@@ -13,7 +13,7 @@ type SuspenseQueryOptionsProps = Omit<
 >
 
 type UrlParamsProp = (string | number)[]
-
+// TODO: integratoin with client SM to track fetching status for get updates (optional feature)
 export const ts = ({
   _url,
   _changeData,
