@@ -8,7 +8,7 @@ export const Api = {
 } as const
 
 export const useGetPosts = {
-  ...ts({ _url: Api.GET_POSTS, _suspenseQueryParams: { staleTime: Infinity } }),
+  ...ts({ _url: Api.GET_POSTS }),
 }
 
 export const useGetPostById = {
@@ -22,6 +22,5 @@ export const useGetCommentById = {
 export const useGetThumbnail = {
   ...ts({
     _url: Api.GET_THUMBNAIL,
-    _suspenseQueryParams: { staleTime: Infinity },
   }),
 }

@@ -8,8 +8,12 @@ import { useGetCommentById, useGetPostById, useGetThumbnail } from "./-queryApi"
 export const Route = createFileRoute("/posts/$id")({
   component: Component,
   loader: async ({ params: { id }, context: { queryClient } }) => {
-    const promise1 = queryClient.ensureQueryData(useGetPostById.loader([id]))
-    const promise2 = queryClient.ensureQueryData(useGetCommentById.loader([id]))
+    const promise1 = queryClient.ensureQueryData(
+      useGetPostById.loader({ urlParams: [id] }),
+    )
+    const promise2 = queryClient.ensureQueryData(
+      useGetCommentById.loader({ urlParams: [id] }),
+    )
     const [data1, data2] = await Promise.all([promise1, promise2])
     return { data1, data2 }
   },
@@ -50,20 +54,22 @@ function Component() {
     data: thumbnailUrlData,
     refetch: thumbnailUrlRefetch,
     isFetching: thumbnailUrlFetching,
-  } = useGetThumbnail.disableQuery()
+  } = useGetThumbnail.query({
+    queryParams: { enabled: false },
+  })
   console.log(thumbnailUrlData)
 
   const {
     data: postIdData,
     refetch: postIdRefetch,
     isFetching: postIdFetching,
-  } = useGetPostById.suspenseQuery([id])
+  } = useGetPostById.suspenseQuery({ urlParams: [id] })
 
   const {
     data: commentData,
     refetch: commentRefetch,
     isFetching: commentIsFetching,
-  } = useGetCommentById.suspenseQuery([id])
+  } = useGetCommentById.suspenseQuery({ urlParams: [id] })
 
   return (
     <>

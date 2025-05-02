@@ -31,12 +31,14 @@ export const Route = createFileRoute("/posts/")({
 })
 
 function Component() {
-  const { data: posts } = useGetPosts.suspenseQuery()
+  const { data: posts } = useGetPosts.suspenseQuery({
+    queryParams: { staleTime: Infinity },
+  })
 
   return (
     <>
       <Heading.H3 className="gap-1">
-        Planets Total:<span>{posts.length}</span>
+        Posts Total:<span>{posts.length}</span>
       </Heading.H3>
 
       <div className={styles.parent}>
