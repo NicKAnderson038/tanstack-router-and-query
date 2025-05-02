@@ -6,8 +6,8 @@ on:
       - main
 
 permissions:
-    id-token: write
-    pages: write
+  id-token: write
+  pages: write
 
 env:
   REPO_NAME: ${{ github.event.repository.name }}
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -35,7 +35,7 @@ jobs:
       - name: Build static files
         id: build
         # run: npm run build
-        run: npx vite build --base=/$REPO_NAME/ && tsc
+        run: npx vite build --base=/$REPO_NAME/
 
       - name: Upload static files as artifact
         id: deployment
