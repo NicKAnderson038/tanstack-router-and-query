@@ -7,19 +7,19 @@ export const Api = {
   GET_THUMBNAIL: "https://jsonplaceholder.typicode.com/photos",
 } as const
 
-export const useGetPosts = {
+export const usePosts = {
   ...ts({ _url: Api.GET_POSTS }),
 }
 
-export const useGetPostById = {
+export const usePostById = {
   ...ts({ _url: Api.GET_POST_BY_ID }),
 }
 
-export const useGetCommentById = {
+export const useCommentById = {
   ...ts({ _url: Api.GET_COMMENTS_BY_ID }),
 }
 
-export const useGetThumbnail = {
+export const useThumbnail = {
   ...ts({
     _url: Api.GET_THUMBNAIL,
   }),

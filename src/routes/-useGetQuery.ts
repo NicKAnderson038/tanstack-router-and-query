@@ -8,7 +8,7 @@ type Props = {
   enabled?: boolean
 }
 
-export const useGetPeople = ({ enabled = true }: Props) => {
+export const usePeople = ({ enabled = true }: Props) => {
   const queryKey = [Api["GET_PEOPLE"]]
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey,

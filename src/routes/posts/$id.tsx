@@ -1,7 +1,7 @@
 import { Button, Heading, Icon, Skeleton, Text } from "@shared"
 import { Link, createFileRoute } from "@tanstack/react-router"
 
-import { useGetCommentById, useGetPostById, useGetThumbnail } from "./-queryApi"
+import { useCommentById, usePostById, useThumbnail } from "./-queryApi"
 
 // $id Dynamic Route behavior: if refreshed on this page, it will show the global pendingComponent in main.tsx
 // overriden by the pendingComponent in this file
@@ -11,10 +11,10 @@ export const Route = createFileRoute("/posts/$id")({
     // ? await requests creates a queuing system first sending promise1 then promise2. Not having await will initiate TTFB for all requests simultaneously
     return {
       promise1: queryClient.ensureQueryData(
-        useGetPostById.loader({ urlParams: [id] }),
+        usePostById.loader({ urlParams: [id] }),
       ),
       promise2: queryClient.ensureQueryData(
-        useGetCommentById.loader({ urlParams: [id] }),
+        useCommentById.loader({ urlParams: [id] }),
       ),
     }
   },
@@ -55,7 +55,7 @@ function Component() {
     data: thumbnailUrlData,
     refetch: thumbnailUrlRefetch,
     isFetching: thumbnailUrlFetching,
-  } = useGetThumbnail.query({
+  } = useThumbnail.query({
     queryParams: { enabled: false },
   })
   console.log(thumbnailUrlData)
@@ -64,13 +64,13 @@ function Component() {
     data: postIdData,
     refetch: postIdRefetch,
     isFetching: postIdFetching,
-  } = useGetPostById.suspenseQuery({ urlParams: [id] })
+  } = usePostById.suspenseQuery({ urlParams: [id] })
 
   const {
     data: commentData,
     refetch: commentRefetch,
     isFetching: commentIsFetching,
-  } = useGetCommentById.suspenseQuery({ urlParams: [id] })
+  } = useCommentById.suspenseQuery({ urlParams: [id] })
 
   return (
     <>

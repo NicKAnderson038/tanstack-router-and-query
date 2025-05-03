@@ -1,6 +1,6 @@
 import { Heading, Text } from "@shared"
 import { createFileRoute } from "@tanstack/react-router"
-import { useGetPeople } from "./-queryApi"
+import { usePeople } from "./-queryApi"
 
 export const Route = createFileRoute("/demo/tanstack-query")({
   component: TanStackQueryDemo,
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/demo/tanstack-query")({
 })
 
 function TanStackQueryDemo() {
-  const { data, isFetching, refetch } = useGetPeople.suspenseQuery()
+  const { data, isFetching, refetch } = usePeople.suspenseQuery()
   console.log(isFetching, data)
   return (
     <>

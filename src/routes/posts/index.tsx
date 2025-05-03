@@ -1,7 +1,7 @@
 import { Heading, Skeleton } from "@shared"
 import { Link, createFileRoute } from "@tanstack/react-router"
 
-import { useGetPosts } from "./-queryApi"
+import { usePosts } from "./-queryApi"
 import styles from "./posts.module.css"
 
 const skeleton = Array.from({ length: 100 }, (_, i) => i + 1)
@@ -10,13 +10,14 @@ export const Route = createFileRoute("/posts/")({
   component: Component,
   loader: ({ context: { queryClient } }) => {
     return {
-      ...queryClient.ensureQueryData(useGetPosts.loader()),
+      ...queryClient.ensureQueryData(usePosts.loader()),
     }
   },
   pendingComponent: () => (
     <>
       <Heading.H3 className="gap-1">
-        Planets Total:<Skeleton.H3 className="max-w-10" />
+        Planets Total:
+        <Skeleton.H3 className="max-w-10" />
       </Heading.H3>
       <div className="flex gap-8 flex-wrap">
         {skeleton.map((num) => (
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/posts/")({
 })
 
 function Component() {
-  const { data: posts } = useGetPosts.suspenseQuery({
+  const { data: posts } = usePosts.suspenseQuery({
     queryParams: { staleTime: Infinity },
   })
 
