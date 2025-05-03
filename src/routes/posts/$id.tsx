@@ -7,15 +7,16 @@ import { useGetCommentById, useGetPostById, useGetThumbnail } from "./-queryApi"
 // overriden by the pendingComponent in this file
 export const Route = createFileRoute("/posts/$id")({
   component: Component,
-  loader: async ({ params: { id }, context: { queryClient } }) => {
-    const promise1 = queryClient.ensureQueryData(
-      useGetPostById.loader({ urlParams: [id] }),
-    )
-    const promise2 = queryClient.ensureQueryData(
-      useGetCommentById.loader({ urlParams: [id] }),
-    )
-    const [data1, data2] = await Promise.all([promise1, promise2])
-    return { data1, data2 }
+  loader: ({ params: { id }, context: { queryClient } }) => {
+    // ? await requests creates a queuing system first sending promise1 then promise2. Not having await will initiate TTFB for all requests simultaneously
+    return {
+      promise1: queryClient.ensureQueryData(
+        useGetPostById.loader({ urlParams: [id] }),
+      ),
+      promise2: queryClient.ensureQueryData(
+        useGetCommentById.loader({ urlParams: [id] }),
+      ),
+    }
   },
   // NOTE: Default application wide settings in main.tsx vs in specific route
   pendingComponent: () => {
