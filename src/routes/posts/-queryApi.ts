@@ -2,7 +2,7 @@ import { ts } from "@services"
 
 export const Api = {
   GET_POSTS: "https://jsonplaceholder.typicode.com/posts?_delay=3000",
-  GET_POST_BY_ID: "https://jsonplaceholder.typicode.com/posts/{id}",
+  GET_POST_BY_ID: "https://jsonplaceholder.typicode.com/posts/{id}?_delay=3000",
   GET_COMMENTS_BY_ID: "https://jsonplaceholder.typicode.com/comments/{id}",
   GET_THUMBNAIL: "https://jsonplaceholder.typicode.com/photos",
 } as const
